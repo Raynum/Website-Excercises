@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Soundboard with Custom Speech</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <h1>Alan Partridge Soundboard</h1>
+
+  <!-- Pre-set sound buttons -->
+  <button onclick="speak('Back of the Net')">Back of the Net</button>
+  <button onclick="speak('Cashback')">Cashback</button>
+  <button onclick="speak('Dan')">Dan</button>
+  <button onclick="speak('Jurassic Park')">Jurassic Park</button>
+  <button onclick="speak('Kiss My Face')">Kiss My Face</button>
+
+  <!-- Custom speech section -->
+  <div>
+    <input type="text" id="customText" placeholder="Type something to speak..." />
+    <button id="speakBtn" onclick="speakCustom()">Speak</button>
+  </div>
+
+  <!-- The script -->
+  <script>
+    function speak(text) {
+      const message = new SpeechSynthesisUtterance(text);
+      window.speechSynthesis.speak(message);
+    }
+
+    function speakCustom() {
+      const input = document.getElementById("customText").value;
+      if (input.trim() !== "") {
+        speak(input);
+      } else {
+        alert("Please enter some text to speak!");
+      }
+    }
+  </script>
+
+</body>
+</html>
